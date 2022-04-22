@@ -2,7 +2,6 @@ import tweepy
 import keyring
 import psycopg2
 import psycopg2.extras
-import pandas as pd
 from tweepy import Cursor
 
 # gather credentials
