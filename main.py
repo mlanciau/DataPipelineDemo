@@ -27,7 +27,8 @@ cur = conn.cursor()
 cur.execute("""
 CREATE TABLE IF NOT EXISTS t_twitter_postgresql(
     c_id BIGINT PRIMARY KEY,
-    c_text TEXT
+    c_text TEXT,
+    c_created_at TEXT
 )
 ;
 """)
@@ -45,7 +46,7 @@ return_code = 0
 
 # query twitter API and insert data into DB
 query = """
-INSERT INTO t_twitter_postgresql(c_id, c_text) VALUES(%s, %s)
+INSERT INTO t_twitter_postgresql(c_id, c_text, c_created_at) VALUES(%s, %s, %s)
 ;
 """
 if tweepy_Bearer_Token is None:
@@ -55,11 +56,11 @@ else:
     # print(tweepy_Bearer_Token)
     client = tweepy.Client(tweepy_Bearer_Token)
     tweets = client.search_recent_tweets(
-        'postgresql', max_results=100, since_id=since_id)
+        'postgresql', max_results=100, since_id=since_id, tweet_fields=['created_at', 'lang', 'author_id'])
     values = []
     if tweets.data is not None and len(tweets.data) > 0:
         for tweet in tweets.data:
-            values.append((tweet.id, tweet.text, ))
+            values.append((tweet.id, tweet.text, tweet.created_at, ))
         print(f"{len(values)} values")
         psycopg2.extras.execute_batch(cur, query, values)
     else:
