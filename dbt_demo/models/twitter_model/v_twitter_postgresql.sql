@@ -1,8 +1,8 @@
 {{ config(materialized='view') }}
 
 with v_twitter_postgresql as (
-    SELECT c_id, c_text
-    FROM t_twitter_postgresql
+    SELECT c_id, c_text, c_created_at
+    FROM {{source('t_twitter_postgresql')}}
 )
 
 SELECT *

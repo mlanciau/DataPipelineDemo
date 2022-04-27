@@ -1,8 +1,7 @@
-
 version: 2
 
 models:
-  - name: v_twitter_postgresql
+  - name: t_twitter_postgresql
     columns:
       - name: c_id
         description: "The primary key for this table"
@@ -11,3 +10,5 @@ models:
           - not_null
       - name: c_text
         description: "Tweet text"
+      - name: c_created_at
+        description: "Timestamp as string"
