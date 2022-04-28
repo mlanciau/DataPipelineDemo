@@ -12,7 +12,7 @@ sources:
             - unique
             - not_null
         - name: c_text
-          description: "Tweet text"
+          description: "Tweet text as string"
           tests:
             - not_null
         - name: c_created_at

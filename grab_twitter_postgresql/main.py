@@ -2,18 +2,20 @@
 import sys
 import tweepy
 import keyring
-import argparse
+# import argparse
 import psycopg2
 import psycopg2.extras
 
 # parse argument
-parser = argparse.ArgumentParser()
-parser.add_argument('-t', '--tweepy_Bearer_Token',
-                    help='Tweepy Bearer Token', required=True)
-args = parser.parse_args()
+# parser = argparse.ArgumentParser()
+# parser.add_argument('-t', '--tweepy_Bearer_Token',
+#                     help='Tweepy Bearer Token', required=True)
+# args = parser.parse_args()
 
 # gather credentials
-tweepy_Bearer_Token = args.tweepy_Bearer_Token
+# tweepy_Bearer_Token = args.tweepy_Bearer_Token
+tweepy_Bearer_Token = keyring.get_password(
+    "system", "tweepy_Bearer_Token")
 dataGovOps_database_ip = '127.0.0.1'
 dataGovOps_database_name = 'mlanciau'
 dataGovOps_database_username = 'mlanciau'
