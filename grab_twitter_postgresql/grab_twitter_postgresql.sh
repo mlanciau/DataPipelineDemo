@@ -6,7 +6,8 @@ mkdir -p ${working_dir}/logs
 echo 'changement de répertoire'
 cd ${working_dir}/Documents/GitHub/DataPipelineDemo
 echo 'exécution du script'
-/usr/bin/python3 ${working_dir}/Documents/GitHub/DataPipelineDemo/grab_twitter_postgresql/main.py > ${working_dir}/logs/main.out 2>&1
+tweepy_Bearer_Token=$(head -n 1 ${working_dir}/.tweepy_Bearer_Token.txt)
+/usr/bin/python3 ${working_dir}/Documents/GitHub/DataPipelineDemo/grab_twitter_postgresql/main.py -t=${tweepy_Bearer_Token} > ${working_dir}/logs/main.out 2>&1
 CR=$?
 echo 'Return code : '$CR
 if [ ! $CR -eq 0 ];
