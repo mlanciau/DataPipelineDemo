@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: twitter_model
+    schema : public
+    tables:
+    - name: t_twitter_postgresql
+      columns:
+        - name: c_id
+          description: "The primary key for this table"
+          tests:
+            - unique
+            - not_null
+        - name: c_text
+          description: "Tweet text"
+          tests:
+            - not_null
+        - name: c_created_at
+          description: "Timestamp as string"

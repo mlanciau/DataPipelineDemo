@@ -2,7 +2,7 @@
 
 with v_twitter_postgresql as (
     SELECT c_id, c_text, c_created_at
-    FROM {{source('t_twitter_postgresql')}}
+    FROM {{source('twitter_model', 't_twitter_postgresql')}}
 )
 
 SELECT *
