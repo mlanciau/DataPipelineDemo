@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: twitter_model
-    schema : public
+    schema : raw
     tables:
     - name: t_twitter_postgresql
       columns:

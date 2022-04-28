@@ -25,7 +25,7 @@ conn = psycopg2.connect(
     f"dbname={dataGovOps_database_name} user={dataGovOps_database_username} password={dataGovOps_database_password}")
 cur = conn.cursor()
 cur.execute("""
-CREATE TABLE IF NOT EXISTS t_twitter_postgresql(
+CREATE TABLE IF NOT EXISTS raw.t_twitter_postgresql(
     c_id BIGINT PRIMARY KEY,
     c_text TEXT,
     c_created_at TEXT
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS t_twitter_postgresql(
 """)
 cur.execute("""
 SELECT MAX(c_id) AS since_id
-FROM t_twitter_postgresql
+FROM raw.t_twitter_postgresql
 ;
 """)
 data = cur.fetchone()
@@ -46,7 +46,7 @@ return_code = 0
 
 # query twitter API and insert data into DB
 query = """
-INSERT INTO t_twitter_postgresql(c_id, c_text, c_created_at) VALUES(%s, %s, %s)
+INSERT INTO raw.t_twitter_postgresql(c_id, c_text, c_created_at) VALUES(%s, %s, %s)
 ;
 """
 if tweepy_Bearer_Token is None:
