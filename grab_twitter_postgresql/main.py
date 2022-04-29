@@ -28,7 +28,8 @@ cur.execute("""
 CREATE TABLE IF NOT EXISTS raw.t_twitter_postgresql(
     c_id BIGINT PRIMARY KEY,
     c_text TEXT,
-    c_created_at TEXT
+    c_created_at TEXT,
+    c_loaded_at TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP
 )
 ;
 """)
