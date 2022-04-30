@@ -18,7 +18,8 @@ sources:
         - name: c_created_at
           description: "Timestamp as string"
         - name: c_loaded_at
-          loaded_at_field: c_loaded_at
-          freshness:
-            warn_after: {count: 1, period: hour}
-            error_after: {count: 4, period: hour}
+          description: "timestamp of loading the row"
+      loaded_at_field: c_loaded_at
+      freshness:
+        warn_after: {count: 1, period: hour}
+        error_after: {count: 4, period: hour}
