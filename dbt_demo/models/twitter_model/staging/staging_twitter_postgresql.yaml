@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: v_twitter_postgresql
+    columns:
+      - name: c_id
+        tests:
+          - unique
+          - not_null
+      - name: c_created_at
+        tests:
+          - not_null
