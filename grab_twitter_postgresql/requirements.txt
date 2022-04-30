@@ -1,3 +1,4 @@
-psycopg2
-keyring
-tweepy
+psycopg2==2.9.2
+keyring==23.5.0
+tweepy==4.8.0
+virtualenv==20.14.1
