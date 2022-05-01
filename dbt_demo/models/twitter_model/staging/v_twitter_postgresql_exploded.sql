@@ -5,6 +5,7 @@ WITH tmp AS (
 
 SELECT tmp.*, CASE WHEN STARTS_WITH(tmp.c_word, '@') THEN 'author'
               WHEN STARTS_WITH(tmp.c_word, '#') THEN 'hashtag'
+              WHEN STARTS_WITH(tmp.c_word, 'https://') THEN 'links'
               ELSE t.c_label
               END c_category
 FROM tmp
