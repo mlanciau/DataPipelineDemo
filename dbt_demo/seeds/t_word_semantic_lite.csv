@@ -1,6 +1,11 @@
 c_word,c_label
 "azure","Cloud provider"
 "microsoft","IT company"
+"google","IT company"
 "python","IT language"
 "java","IT language"
 "javascript","IT language"
+"bash","IT language"
+"postgresql","Current semantic"
+"database","Current semantic"
+"databases","Current semantic"

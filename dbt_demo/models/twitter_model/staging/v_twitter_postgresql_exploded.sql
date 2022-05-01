@@ -3,6 +3,12 @@ WITH tmp AS (
   FROM {{ ref('v_twitter_postgresql') }}
 )
 
-SELECT *
+SELECT tmp.*, CASE WHEN STARTS_WITH(tmp.c_word, '@') THEN 'author'
+               WHEN STARTS_WITH(tmp.c_word, '#') THEN 'hashtag'
+               ELSE t.c_label
+               END c_category
 FROM tmp
-WHERE LENGTH(c_word) > 3
+LEFT OUTER JOIN {{ ref('t_word_semantic_lite') }} t
+ON tmp.c_word = t.c_word
+WHERE LENGTH(tmp.c_word) > 3
+  AND tmp.c_word NOT IN (SELECT c_word FROM {{ ref('t_word_filter_lite') }})
