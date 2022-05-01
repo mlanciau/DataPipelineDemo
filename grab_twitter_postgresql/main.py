@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS raw.t_twitter_postgresql(
     c_id BIGINT PRIMARY KEY,
     c_text TEXT,
     c_created_at TEXT,
+    c_lang TEXT,
     c_loaded_at TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP
 )
 ;
@@ -47,7 +48,7 @@ return_code = 0
 
 # query twitter API and insert data into DB
 query = """
-INSERT INTO raw.t_twitter_postgresql(c_id, c_text, c_created_at) VALUES(%s, %s, %s)
+INSERT INTO raw.t_twitter_postgresql(c_id, c_text, c_created_at, c_lang) VALUES(%s, %s, %s, %s)
 ;
 """
 if tweepy_Bearer_Token is None:
@@ -61,7 +62,7 @@ else:
     values = []
     if tweets.data is not None and len(tweets.data) > 0:
         for tweet in tweets.data:
-            values.append((tweet.id, tweet.text, tweet.created_at, ))
+            values.append((tweet.id, tweet.text, tweet.created_at, tweet.lang))
         print(f"{len(values)} values")
         psycopg2.extras.execute_batch(cur, query, values)
     else:
