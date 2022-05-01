@@ -58,7 +58,7 @@ else:
     # print(tweepy_Bearer_Token)
     client = tweepy.Client(tweepy_Bearer_Token)
     tweets = client.search_recent_tweets(
-        'postgresql', max_results=100, since_id=since_id, tweet_fields=['created_at', 'lang', 'author_id'])
+        'postgres', max_results=100, since_id=since_id, tweet_fields=['created_at', 'lang', 'author_id'])
     values = []
     if tweets.data is not None and len(tweets.data) > 0:
         for tweet in tweets.data:
