@@ -1,0 +1,7 @@
+version: 2
+
+seeds:
+  - name: t_word_filter_lite
+    description: "quick list of word to remove"
+  - name: t_word_semantic_lite
+    description: "quick list of word and their category"

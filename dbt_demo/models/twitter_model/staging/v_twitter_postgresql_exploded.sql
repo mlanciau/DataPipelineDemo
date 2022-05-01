@@ -1,12 +1,12 @@
 WITH tmp AS (
-  SELECT c_id, LOWER(regexp_split_to_table(c_text, '\s+')) AS c_word, c_created_at, c_lang
+  SELECT c_id, LOWER(regexp_split_to_table(c_text, '\s+')) AS c_word, c_created_at, c_lang, c_retweet
   FROM {{ ref('v_twitter_postgresql') }}
 )
 
 SELECT tmp.*, CASE WHEN STARTS_WITH(tmp.c_word, '@') THEN 'author'
-               WHEN STARTS_WITH(tmp.c_word, '#') THEN 'hashtag'
-               ELSE t.c_label
-               END c_category
+              WHEN STARTS_WITH(tmp.c_word, '#') THEN 'hashtag'
+              ELSE t.c_label
+              END c_category
 FROM tmp
 LEFT OUTER JOIN {{ ref('t_word_semantic_lite') }} t
 ON tmp.c_word = t.c_word
