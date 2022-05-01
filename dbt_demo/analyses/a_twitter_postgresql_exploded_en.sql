@@ -1,5 +1,5 @@
 SELECT c_word, c_category, COUNT(*) AS c_nbr
-FROM {{ ref('twitter_model', 't_twitter_postgresql_exploded') }}
+FROM {{ ref('t_twitter_postgresql_exploded') }}
 WHERE c_lang = 'en'
 GROUP BY c_word, c_category
 ORDER BY c_nbr DESC
