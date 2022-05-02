@@ -6,7 +6,7 @@ echo 'création des répertoires'
 mkdir ${user_dir}/logs
 echo 'changement de répertoire'
 cd ${virtualenv_dir}
-dbt seed
+/opt/homebrew/bin/dbt seed
 CR=$?
 echo 'Return code : '$CR
 if [ ! $CR -eq 0 ];
@@ -14,7 +14,7 @@ then
   cp ${user_dir}/logs/dbt_seed.out ${user_dir}/Desktop/dbt_seed.out
   exit $CR
 fi
-dbt source freshness
+/opt/homebrew/bin/dbt source freshness
 CR=$?
 echo 'Return code : '$CR
 if [ ! $CR -eq 0 ];
@@ -22,7 +22,7 @@ then
   cp ${user_dir}/logs/dbt_source_freshness.out ${user_dir}/Desktop/dbt_source_freshness.out
   exit $CR
 fi
-dbt seed
+/opt/homebrew/bin/dbt seed
 CR=$?
 echo 'Return code : '$CR
 if [ ! $CR -eq 0 ];
@@ -30,7 +30,7 @@ then
   cp ${user_dir}/logs/dbt_seed.out ${user_dir}/Desktop/dbt_seed.out
   exit $CR
 fi
-dbt test
+/opt/homebrew/bin/dbt test
 CR=$?
 echo 'Return code : '$CR
 if [ ! $CR -eq 0 ];
@@ -38,7 +38,7 @@ then
   cp ${user_dir}/logs/dbt_test.out ${user_dir}/Desktop/dbt_test.out
   exit $CR
 fi
-dbt run
+/opt/homebrew/bin/dbt run
 CR=$?
 echo 'Return code : '$CR
 if [ ! $CR -eq 0 ];
@@ -46,7 +46,7 @@ then
   cp ${user_dir}/logs/dbt_run.out ${user_dir}/Desktop/dbt_run.out
   exit $CR
 fi
-dbt docs generate
+/opt/homebrew/bin/dbt docs generate
 CR=$?
 echo 'Return code : '$CR
 if [ ! $CR -eq 0 ];
