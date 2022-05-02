@@ -2,8 +2,10 @@ version: 2
 
 models:
   - name: v_twitter_postgresql
+    description: One tweet per row
     columns:
       - name: c_id
+        description: Primary key of the tweet
         tests:
           - unique
           - not_null

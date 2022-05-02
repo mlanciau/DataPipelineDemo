@@ -15,6 +15,7 @@ echo 'Return code : '$CR
 if [ ! $CR -eq 0 ];
 then
   cp ${user_dir}/logs/pip.out ${user_dir}/Desktop/grab_twitter_postgresql.out
+  exit $CR
 fi
 echo 'exécution du script'
 tweepy_Bearer_Token=$(head -n 1 ${user_dir}/.tweepy_Bearer_Token.txt)
@@ -24,4 +25,5 @@ echo 'Return code : '$CR
 if [ ! $CR -eq 0 ];
 then
   cp ${user_dir}/logs/main.out ${user_dir}/Desktop/grab_twitter_postgresql.out
+  exit $CR
 fi
