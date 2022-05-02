@@ -1,5 +1,5 @@
 WITH tmp AS (
-  SELECT c_id, LOWER(regexp_split_to_table(c_text, '\s+')) AS c_word, c_created_at, c_lang, c_retweet
+  SELECT c_id, LOWER(regexp_split_to_table(c_text, '\s+')) AS c_word, c_created_at, c_lang, c_retweet, c_author_id
   FROM {{ ref('v_twitter_postgresql') }}
 )
 
