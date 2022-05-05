@@ -6,15 +6,15 @@ echo 'création des répertoires'
 mkdir ${user_dir}/logs
 echo 'changement de répertoire'
 cd ${virtualenv_dir}
-echo 'dbt deps'
-/opt/homebrew/bin/dbt deps > ${user_dir}/logs/dbt_deps.out 2>&1
-CR=$?
-echo 'Return code : '$CR
-if [ ! $CR -eq 0 ];
-then
-  cp ${user_dir}/logs/dbt_deps.out ${user_dir}/Desktop/dbt_deps.out
-  exit $CR
-fi
+# echo 'dbt deps'
+# /opt/homebrew/bin/dbt deps > ${user_dir}/logs/dbt_deps.out 2>&1
+# CR=$?
+# echo 'Return code : '$CR
+# if [ ! $CR -eq 0 ];
+# then
+#   cp ${user_dir}/logs/dbt_deps.out ${user_dir}/Desktop/dbt_deps.out
+#   exit $CR
+# fi
 echo 'dbt source freshness'
 /opt/homebrew/bin/dbt source freshness > ${user_dir}/logs/dbt_source_freshness.out 2>&1
 CR=$?
